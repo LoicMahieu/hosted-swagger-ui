@@ -12,6 +12,10 @@ const App = ({ location: { search } }) => {
   const query = search ? querystring.parse(search.replace(/^\?/, "")) : {};
   const { url } = query;
 
+  if (typeof window === "undefined") {
+    return <pre>Loading...</pre>;
+  }
+
   if (!url) {
     return <pre>Missing `url` parameter !</pre>;
   }
